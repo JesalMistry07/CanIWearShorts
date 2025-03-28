@@ -3,10 +3,12 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div>
-
-      <div className="grid items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 ">
-      <input type="text" placeholder="Enter your location" />
+      <div>
+      <h1>Can I Wear Shorts?</h1>
       </div>
+      <p>Enter a location to see if you can wear shorts</p>
+      <input type="text" placeholder="Enter a location" />
+
     </div>
   );
 }
