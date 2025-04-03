@@ -16,13 +16,20 @@ const Result = () => {
   const precip = params.get("precip");
   const canWearShorts = params.get("canWearShorts");
   const country: string = params.get("country")?.toString() || "";
+  const city: string = params.get("city")?.toString() || "";
 
 
 
   return (
     <div className="text-center mt-10">
-      <h1 className="text-3xl font-bold mb-4">Query Parameters</h1>
-      <p className="text-lg mt-2">Temperature: {temp}°C</p>
+
+      <h1 className="text-4xl font-semibold mb-2 text-center pt-15">
+      {canWearShorts === "true" ? "Yes! You Can Wear Shorts! ✅" : "No You Can't Wear Shorts ❌"}
+      </h1>
+      <div>
+          <h2>Current Weather:</h2>
+          <span>{temp}  </span>
+      </div>
 
       <p>{timeZone}</p>
       <p>{wind}</p>
@@ -30,9 +37,9 @@ const Result = () => {
       <p>{sunrise}</p>
       <p>{sunset}</p>
       <p>{precip}</p>
-      <ReactCountryFlag countryCode={country} svg />
+      <ReactCountryFlag countryCode={country} svg className="text-9xl"/>
 
-      <p>{canWearShorts === "true" ? "Yes you can wear shorts" : "No you can't wear shorts"}</p>
+  
 
     </div>
   );

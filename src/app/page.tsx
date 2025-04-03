@@ -34,12 +34,13 @@ export default function Home() {
       const sunrise = weather.sunrise;
       const sunset = weather.sunset; 
       const countryCode = weather.country_code;
+      const city = weather.city_name;
       const canWearShorts = temp > 15 && windSpeed < 10 && precipitation < 5;
       console.log(data);
       console.log({ temp, windSpeed, precipitation });
       console.log(canWearShorts)
       router.push(
-        `/result?temp=${temp}&wind=${windSpeed}&canWearShorts=${canWearShorts}&dir=${windDirection}&sunrise=${sunrise}&sunset=${sunset}&time=${timezone}&precip=${precipitation}&country=${countryCode}`
+        `/result?temp=${temp}&wind=${windSpeed}&canWearShorts=${canWearShorts}&dir=${windDirection}&sunrise=${sunrise}&sunset=${sunset}&time=${timezone}&precip=${precipitation}&country=${countryCode}&city=${city}` // Pass the data as query parameters
       );
       
     } catch (error) {
