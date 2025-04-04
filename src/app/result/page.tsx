@@ -67,7 +67,7 @@ const Result = () => {
   return (
     <div className={`text-center mt-10 transition-all duration-300 ${isOpen ? "blur-md" : ""}`} >
 
-      <h1 className="text-4xl font-semibold mb-2 text-center pt-15">
+      <h1 className="text-4xl font-semibold mb-2 text-center pt-15 backdrop-blur-sm bg-white/1 p-4 rounded-lg max-w-xl mx-auto">
         {shortsMessage}
       </h1>
 
@@ -92,7 +92,7 @@ const Result = () => {
 
       </div>
 
-      <div className="border border-gray-300 rounded-lg p-4 max-w-screen-sm sm:max-w-screen-md md:max-w-screen-lg mx-auto shadow-md h-fit grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+      <div className="border backdrop-blur-md border-gray-300 rounded-lg p-4 max-w-screen-sm sm:max-w-screen-md md:max-w-screen-lg mx-auto shadow-md h-fit grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
         <div className="md:col-span-2 text-center font-semibold text-lg"> Weather Information at {city}: </div>
         {/* The rest */}
 

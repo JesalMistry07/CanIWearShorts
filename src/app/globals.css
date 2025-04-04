@@ -43,5 +43,41 @@ body {
   animation: slide-down 0.5s ease-in-out;
 }
 
+/* globals.css */
+
+body::after {
+  content: "";
+  position: absolute;
+  margin-top: 7vh;
+  top: 0;
+  right: 0;
+  background-image: url("/short-right.png");
+  background-size: clamp(100px, 20vw, 280px); /* responsive scaling */
+  background-repeat: no-repeat;
+  background-position: top right;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: -90;
+  width: 100%;
+  height: 100%;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-image: url("/short-left.png"); /* ✅ update this path */
+  background-size: clamp(100px, 20vw, 280px);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: -90;
+  width: 100%;
+  height: 100%;
+}
+
+
 
 

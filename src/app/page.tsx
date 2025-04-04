@@ -21,6 +21,9 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
+  
+  
+
   async function onEnter() {
     try {
       const res = await fetch("https://api.weatherbit.io/v2.0/current?%26&key=a19e363042d6442da36eb48d0fd68e1c&%26&city=" + `${inputValue}`);
@@ -57,7 +60,7 @@ export default function Home() {
 
       if (temp >= 16 && windSpeed < 8 && precipitation < 4) {
         canWearShorts = "true";
-      } else if (temp >= 11 && windSpeed < 7 && precipitation < 2) {
+      } else if (temp >= 11 && windSpeed < 4 && precipitation < 2) {
         canWearShorts = "maybe";
       } else {
         canWearShorts = "false";
@@ -72,8 +75,16 @@ export default function Home() {
       );
 
     } catch (error) {
-      router.push("/errorPage");
       console.error("Fetch failed:", error);
+      if (error instanceof Error) {
+        if (error.message.includes("429")) {
+          alert("API limit reached. Please try again later.");
+
+        }
+        
+      } else {
+        console.error("An unknown error occurred:", error);
+      }
     }
   }
 
