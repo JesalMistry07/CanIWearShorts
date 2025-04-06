@@ -15,6 +15,7 @@ const getInt = (value: string | null): number | undefined => {
   return isNaN(num) ? undefined : num;
 };
 
+
 const Result = () => {
   const { isOpen } = useNavbar();
   const params = useSearchParams();
@@ -45,6 +46,7 @@ const Result = () => {
   const weatherDesc = params.get("weatherDesc") || "";
   const weatherIcon = params.get("weatherIcon") || "";
   const obTime = params.get("ob_time") || "";
+  const pod = params.get("pod") || "";
 
 
 
@@ -61,6 +63,9 @@ const Result = () => {
       : clouds !== undefined && clouds <= 70
         ? "🌤️"
         : "☁️";
+
+  
+  const determinePod = pod == "d" ? "Day ☀️" : pod === "n" ? "Night 🌙" : "Unknown";
 
 
 
@@ -100,6 +105,7 @@ const Result = () => {
         {appTemp !== undefined && <p>🌡️ Feels Like: {appTemp}°C</p>}
         {sunrise && <p>🌅 Sunrise: {sunrise}</p>}
         {sunset && <p>🌇 Sunset: {sunset}</p>}
+        {pod && <p>🌤️ Part of Day: {determinePod}</p>}
         {wind !== undefined && <p>🌬️ Wind Speed: {wind} m/s</p>}
         {windCdir && windDirFull && (
           <p>🧭 Wind Direction: {windCdir} / {windDirFull}</p>

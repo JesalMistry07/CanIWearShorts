@@ -55,6 +55,7 @@ export default function Home() {
       const weatherCode = weather.weather.code;
       const weatherIcon = weather.weather.icon;
       const ob_time = weather.ob_time;
+      const pod = weather.pod;
 
       let canWearShorts: "true" | "false" | "maybe";
 
@@ -71,7 +72,7 @@ export default function Home() {
           city
         )}&visibility=${visibility}&clouds=${clouds}&uv=${uv}&aqi=${aqi}&rh=${rh}&dewPoint=${dewPoint}&lat=${lat}&lon=${lon}&solarRad=${solarRad}&weatherDesc=${encodeURIComponent(
           weatherDescription
-        )}&weatherCode=${weatherCode}&weatherIcon=${weatherIcon}&canWearShorts=${canWearShorts}&ob_time=${ob_time}`
+        )}&weatherCode=${weatherCode}&weatherIcon=${weatherIcon}&canWearShorts=${canWearShorts}&ob_time=${ob_time}&pod=${pod}`
       );
 
     } catch (error) {
