@@ -6,8 +6,11 @@ import { Router } from "next/router";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
+
   const { isOpen } = useNavbar();
   const [inputValue, setInputValue] = useState("");
+  const [invalidInput, setInvalidInput] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const locations = ["London", "Madrid", "Nairobi", "Singapore", "Orlando", "Kuala Lumpur", "Lisbon"];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,8 +28,19 @@ export default function Home() {
   
 
   async function onEnter() {
+    setIsLoading(true);
     try {
       const res = await fetch("https://api.weatherbit.io/v2.0/current?%26&key=a19e363042d6442da36eb48d0fd68e1c&%26&city=" + `${inputValue}`);
+      if (!res.ok) {
+        setIsLoading(false);
+        if (res.status === 400) {
+          setInvalidInput(true);
+
+        } else if (res.status === 429){
+          alert("Rate limit exceeded. Please try again later.");
+        }
+      }
+      
       const data = await res.json();
       const weather = data.data[0];
       const temp = weather.temp;
@@ -76,15 +90,12 @@ export default function Home() {
       );
 
     } catch (error) {
-      console.error("Fetch failed:", error);
-      if (error instanceof Error) {
-        if (error.message.includes("429")) {
-          alert("API limit reached. Please try again later.");
+      console.error("Error fetching weather data:", error);
 
+      if (error instanceof Error) {
+        if (error.message.includes("400")) {
+          alert("Location not found. Please try again.");
         }
-        
-      } else {
-        console.error("An unknown error occurred:", error);
       }
     }
   }
@@ -129,17 +140,47 @@ export default function Home() {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value.trimStart())}
           onKeyDown={(e) => {
+            setInvalidInput(false);
             if (e.key === "Enter") {
               onEnter();
             }
           }}
           className="flex-1 px-4 py-2 border border-gray-300 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
-          onClick={onEnter}>
-          Search
-        </button>
+        /> 
+        <button
+  className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition flex items-center justify-center min-w-[6rem]"
+  onClick={onEnter}
+  disabled={isLoading}
+>
+  {isLoading ? (
+    <svg
+      className="animate-spin h-5 w-5 text-white"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+      />
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+      />
+    </svg>
+  ) : (
+    "Search"
+  )}
+</button>
+
       </div>
+      <div> {invalidInput && <p className="text-red-500 pt-4 text-center">Invalid Location - Please check the spelling of your location, or enter a new location </p>}</div>
+
     </main>
   );
 }
