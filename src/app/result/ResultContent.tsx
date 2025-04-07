@@ -97,7 +97,7 @@ const Result = () => {
 
             </div>
             <div>
-                <p className="text-md mb-8 max-w-2xl mx-auto text-gray-700 pl-2 pr-2" > {canWearShorts === "true" ? <strong>You Can Wear Shorts! </strong> : canWearShorts === "false" ? <strong>No You Can't Wear Shorts</strong> : <strong>"Maybe You Could Wear Shorts! "</strong>}
+                <p className="text-md mb-8 max-w-2xl mx-auto text-gray-700 pl-2 pr-2" > {canWearShorts === "true" ? <strong>You Can Wear Shorts! </strong> : canWearShorts === "false" ? <strong>No You Can't Wear Shorts! </strong> : <strong>"Maybe You Could Wear Shorts! "</strong>}
                     The <strong>current temperature</strong> is <strong>{temp}°C</strong>, with a <strong>wind speed</strong> of <strong>{wind} m/s</strong> and a <strong>precipitation level</strong> of <strong>{precip} mm</strong>.
                     {canWearShorts === "true" ? " Suitable for wearing shorts on this lovely day! ☀️" : canWearShorts === "false" ? " Not suitable for wearing shorts today" : " Might be suitable for wearing shorts, but currently its a bit of a grey area, so its down to personal preference!"}
                 </p>
