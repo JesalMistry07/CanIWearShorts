@@ -115,7 +115,7 @@ const Result = () => {
                 {appTemp !== undefined && <p>🌡️ Feels Like: {appTemp}°C</p>}
                 {sunrise && <p>🌅 Sunrise: {sunrise}</p>}
                 {sunset && <p>🌇 Sunset: {sunset}</p>}
-                {pod && <p>🌤️ Part of Day: {determinePod}</p>}
+                {pod && <p>🌤️ Time of Day: {determinePod}</p>}
                 {wind !== undefined && <p>🌬️ Wind Speed: {wind} m/s</p>}
                 {windCdir && windDirFull && (
                     <p>🧭 Wind Direction: {windCdir} / {windDirFull}</p>
@@ -124,7 +124,7 @@ const Result = () => {
                 {visibility !== undefined && <p>👓 Visibility: {visibility} km</p>}
                 {clouds !== undefined && <p>☁️ Cloud Cover: {clouds}%</p>}
                 {uv !== undefined && <p>🧴 UV Index: {uv}</p>}
-                {aqi !== undefined && <p>🫧 AQI: {aqi}</p>}
+                {aqi !== undefined && <p>🫧 AQI (Air Quality Index): {aqi}</p>}
                 {rh !== undefined && <p>💦 Humidity: {rh}%</p>}
                 {dewPoint !== undefined && <p>💧 Dew Point: {dewPoint}°C</p>}
                 {solarRad !== undefined && <p>☀️ Solar Radiation: {solarRad} W/m²</p>}
