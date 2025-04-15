@@ -30,7 +30,7 @@ export default function Home() {
   async function onEnter() {
     setIsLoading(true);
     try {
-      const res = await fetch(`/api/weather?city=${encodeURIComponent(inputValue)}`);
+      const res = await fetch("https://api.weatherbit.io/v2.0/current?%26&key=a19e363042d6442da36eb48d0fd68e1c&%26&city=" + `${inputValue}`);
 
 
       if (!res.ok) {
