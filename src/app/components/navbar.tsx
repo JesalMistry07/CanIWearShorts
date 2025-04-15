@@ -63,7 +63,7 @@ const Navbar = () => {
                 >
                     <div className="flex flex-col md:flex-row px-4 py-4 space-y-2 md:space-y-0 md:space-x-4">
                         <a href="/" className="text-black hover:text-gray-600 lg:border-b-2 md:border-b-2 hover:border-t-indigo-950">Home</a>
-                        <a href="#analytics" className="text-black hover:text-gray-600 lg:border-b-2 md:border-b-2">Analytics</a>
+                        {/* <a href="#analytics" className="text-black hover:text-gray-600 lg:border-b-2 md:border-b-2">Analytics</a> */}
                         <a href="//www.jesalmistry.com/#contact" className="text-black hover:text-gray-600 lg:border-b-2 md:border-b-2">Contact</a>
                     </div>
                 </div>
