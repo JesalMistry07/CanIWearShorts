@@ -10,11 +10,10 @@ export async function GET(req: Request) {
   
     try {
       const lambdaRes = await fetch(
-        `https://hq9nkwr5c0.execute-api.eu-west-2.amazonaws.com/prod/weather/${encodeURIComponent(city)}`
+        `https://fuihpvj7w7.execute-api.eu-west-2.amazonaws.com/prod/weather/${encodeURIComponent(city)}`
       );
   
-      const text = await lambdaRes.text(); // get raw response
-      console.log("🐛 Raw Lambda response:", text);
+      const text = await lambdaRes.text();
   
       if (!lambdaRes.ok) {
         return new Response(text, { status: lambdaRes.status });
