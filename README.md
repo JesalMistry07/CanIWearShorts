@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# ☀️ Can I Wear Shorts? 
 
-First, run the development server:
+Can I Wear Shorts? is a full-stack weather-based decision tool that tells users whether it's a good idea to wear shorts, based on live weather data.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Built with a modern React + Next.js frontend, it connects to a .NET serverless backend on AWS Lambda that handles secure API calls and logs user searches to an RDS MySQL database. The UI is fully responsive, accessible, and styled with Tailwind CSS.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+✨ Features
+Live weather-based shorts recommendation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Search logging to track popular locations and usage trends
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Analytics dashboard displaying:
 
-## Learn More
+Most searched cities and countries
 
-To learn more about Next.js, take a look at the following resources:
+Hottest, coldest, and windiest locations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Most popular time of day (day/night)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Total number of searches
 
-## Deploy on Vercel
+Clean architecture with separation of concerns across services, controllers, and data access
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Deployed and accessible at: caniwearshorts.com
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`NEXT_PUBLIC_WEATHER_API`
+
+`NEXT_PUBLIC_ANALYTICS_API`
+
