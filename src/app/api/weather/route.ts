@@ -12,6 +12,8 @@ export async function GET(req: Request) {
       const lambdaRes = await fetch(
         `${process.env.WEATHER_API}/${encodeURIComponent(city)}`
       );
+
+      console.log("WEATHER_API:", process.env.WEATHER_API);
   
       const text = await lambdaRes.text();
   
