@@ -10,7 +10,7 @@ export async function GET(req: Request) {
   
     try {
       const lambdaRes = await fetch(
-        `https://fuihpvj7w7.execute-api.eu-west-2.amazonaws.com/prod/weather/${encodeURIComponent(city)}`
+        `${process.env.NEXT_PUBLIC_WEATHER_API}/${encodeURIComponent(city)}`
       );
   
       const text = await lambdaRes.text();
@@ -24,7 +24,7 @@ export async function GET(req: Request) {
         status: 200,
       });
     } catch (err) {
-      console.error("💥 Lambda fetch failed:", err);
+      console.error("Lambda fetch failed:", err);
       return new Response(JSON.stringify({ error: "Internal error" }), {
         status: 500,
       });

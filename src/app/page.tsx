@@ -35,12 +35,12 @@ export default function Home() {
 
       if (!res.ok) {
         setIsLoading(false);
-        if (res.status === 400) {
+        if (res.status === 400 || res.status === 500 ) {
           setInvalidInput(true);
 
         } else if (res.status === 429){
           alert("Rate limit exceeded. Please try again later.");
-        }
+        } 
       }
       
       const data = await res.json();
@@ -126,10 +126,10 @@ export default function Home() {
       {/* Message */}
       <div className="text-center flex justify-center mb-4">
         {inputValue === "" ? (
-          <p>Enter a location to see if you can wear shorts!</p>
+          <p>Enter your city to see if you can currently wear shorts!</p>
         ) : (
           <p>
-            Enter a location to see if you can currently wear shorts in {inputValue}
+            Enter your city to see if you can currently wear shorts in {inputValue}
           </p>
         )}
       </div>

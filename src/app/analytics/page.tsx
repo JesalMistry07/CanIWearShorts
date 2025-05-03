@@ -2,8 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
+import { useNavbar } from "../context/NavbarContext";
 
 export default function AnalyticsPage() {
+
+  const {isOpen} = useNavbar();
   const [analytics, setAnalytics] = useState<any>(null);
   const lookup = require('country-code-lookup')
   const [showCounts, setShowCounts] = useState(false);
@@ -32,7 +35,7 @@ export default function AnalyticsPage() {
 
   if (!analytics) {
     return (
-      <div className="min-h-dvh flex flex-col pt-32">
+      <div className={`min-h-dvh flex flex-col pt-32 ${isOpen ? "blur-md" : ""}`}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
 
           {/* Skeleton looaddding card */}
@@ -59,7 +62,7 @@ export default function AnalyticsPage() {
   }
 
   return (
-    <div className="min-h-dvh flex flex-col pt-20 md:pt-30">
+    <div className={`min-h-dvh flex flex-col pt-20 md:pt-30 ${isOpen ? "blur-md" : ""}`}>
       <div>
         <div className="px-4 md:px-8">
           <div className="bg-white rounded-2xl shadow-md p-6 mb-6">

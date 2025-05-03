@@ -1,7 +1,7 @@
 export async function GET(req: Request) {
 
     try {
-        const analytics = await fetch(`https://fuihpvj7w7.execute-api.eu-west-2.amazonaws.com/prod/analytics`);
+        const analytics = await fetch(`${process.env.NEXT_PUBLIC_ANALYTICS_API}`);
 
         if (!analytics.ok) {
             const errorText = await analytics.text();
@@ -14,7 +14,7 @@ export async function GET(req: Request) {
             status: 200,
         });
     } catch (error) {
-        console.error("💥 Lambda fetch failed:", error);
+        console.error("Lambda fetch failed:", error);
         return new Response(JSON.stringify({ error: "Internal error" }), {
             status: 500
         });
