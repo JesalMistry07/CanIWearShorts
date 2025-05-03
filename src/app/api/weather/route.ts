@@ -10,7 +10,7 @@ export async function GET(req: Request) {
   
     try {
       const lambdaRes = await fetch(
-        `${process.env.NEXT_PUBLIC_WEATHER_API}/${encodeURIComponent(city)}`
+        `${process.env.WEATHER_API}/${encodeURIComponent(city)}`
       );
   
       const text = await lambdaRes.text();
