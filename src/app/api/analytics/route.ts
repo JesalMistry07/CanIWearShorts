@@ -1,11 +1,24 @@
+
+
 export async function GET(req: Request) {
 
-    const analyticsUrl = process.env.ANALYTICS_API;
+    let ANALYTICS_API; 
 
-    console.log("ANALYTICS_API:", analyticsUrl);
+    
+    try {
+        // @ts-ignore
+        const { secrets } = await import('aws-amplify');
+        const runtimeSecrets = await secrets();
+        ANALYTICS_API = runtimeSecrets.ANALYTICS_API;
+
+    } catch (err) {
+        console.warn("Falling back to process.env (local dev likely)", err);
+        ANALYTICS_API = process.env.ANALYTICS_API;
+      }
 
 
-    if (!analyticsUrl) {
+
+    if (!ANALYTICS_API) {
         console.error("Missing ANALYTICS_API env var.");
         return new Response(
           JSON.stringify({ error: "Missing ANALYTICS_API environment variable" }),
@@ -15,7 +28,7 @@ export async function GET(req: Request) {
 
 
     try {
-        const analytics = await fetch(analyticsUrl);
+        const analytics = await fetch(ANALYTICS_API);
 
 
         if (!analytics.ok) {
