@@ -2,20 +2,9 @@
 
 export async function GET(req: Request) {
 
-    let ANALYTICS_API; 
+    const ANALYTICS_API = process.env.ANALYTICS_API; 
 
     
-    try {
-        // @ts-ignore
-        const { secrets } = await import('aws-amplify');
-        const runtimeSecrets = await secrets();
-        ANALYTICS_API = runtimeSecrets.ANALYTICS_API;
-
-    } catch (err) {
-        console.warn("Falling back to process.env (local dev likely)", err);
-        ANALYTICS_API = process.env.ANALYTICS_API;
-      }
-
 
 
     if (!ANALYTICS_API) {
