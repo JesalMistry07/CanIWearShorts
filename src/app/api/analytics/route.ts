@@ -1,7 +1,20 @@
+
+
 export async function GET(req: Request) {
 
+    const ANALYTICS_API = process.env.ANALYTICS_API; 
+
+    if (!ANALYTICS_API) {
+        console.error("Missing ANALYTICS_API env var.");
+        return new Response(
+          JSON.stringify({ error: "Missing ANALYTICS_API environment variable" }),
+          { status: 500 }
+        );
+    }
+
     try {
-        const analytics = await fetch(`${process.env.ANALYTICS_API}`);
+        const analytics = await fetch(ANALYTICS_API);
+
 
         if (!analytics.ok) {
             const errorText = await analytics.text();

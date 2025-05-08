@@ -25,7 +25,6 @@ export default function AnalyticsPage() {
         const res = await fetch("/api/analytics");
         const data = await res.json();
         setAnalytics(data);
-        console.log(data);
       } catch (error) {
         console.error("Failed to fetch analytics:", error);
       }
